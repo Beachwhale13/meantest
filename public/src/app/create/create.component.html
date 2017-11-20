@@ -1,0 +1,48 @@
+<div>
+    <a class="pull-right" [routerLink]="['/dashboard']">Cancel</a>
+</div>
+
+<div>
+  <p>Put the questions and options here:</p>
+
+  <form #pollForm="ngForm" (submit)="submitPoll(); pollForm.reset()">
+    <div class="form-group">
+      <label for="question">Question</label>
+      <input type="text" name="question" [(ngModel)]="newSurvey.question" required minlength='8' #question='ngModel'/>
+      <p *ngIf="question.dirty && question.errors" style="color: red">Please enter a longer question</p>
+      <p *ngIf="question.invalid && (question.dirty || question.touched)" style="color: red">Question is required</p>
+    </div>
+
+    <div class="form-group">
+      <label for="option1">Option 1</label>
+      <input type="text" name="option1" [(ngModel)]="newSurvey.option1" required minlenght="3" #option1='ngModel'/>
+      <p *ngIf="option1.dirty && option1.errors" style="color: red">Please enter a longer option</p>
+      <p *ngIf="option1.invalid && (option1.dirty || option1.touched)" style="color: red">Option1 is required</p>
+    </div>
+
+    <div class="form-group">
+      <label for="option2">Option 2</label>
+      <input type="text" name="option2" [(ngModel)]="newSurvey.option2" required minlenght="3" #option2='ngModel'/>
+      <p *ngIf="option2.dirty && option2.errors" style="color: red">Please enter a longer option</p>
+      <p *ngIf="option2.invalid && (option2.dirty || option2.touched)" style="color: red">Option1 is required</p>
+    </div>
+
+    <div class="form-group">
+      <label for="option3">Option 3</label>
+      <input type="text" name="option1" [(ngModel)]="newSurvey.option3" required minlenght="3" #option3='ngModel'/>
+      <p *ngIf="option3.dirty && option3.errors" style="color: red">Please enter a longer option</p>
+      <p *ngIf="option3.invalid && (option3.dirty || option3.touched)" style="color: red">Option3 is required</p>
+    </div>
+
+    <div class="form-group">
+      <label for="option4">Option 4</label>
+      <input type="text" name="option1" [(ngModel)]="newSurvey.option4" required minlenght="3" #option4='ngModel'/>
+      <p *ngIf="option4.dirty && option4.errors" style="color: red">Please enter a longer option</p>
+      <p *ngIf="option4.invalid && (option4.dirty || option4.touched)" style="color: red">Option4 is required</p>
+    </div>
+
+    <div class="text-right">
+      <button type="submit" class="btn btn-default" [disabled]="pollForm.invalid">Create Poll</button>
+    </div>
+  </form>
+</div>
